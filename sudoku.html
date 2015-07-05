@@ -109,7 +109,7 @@
     </div>
 
 
-    <link rel="stylesheet" href="../stylesheet/sudoku.css"/>
+    <link rel="stylesheet" href="sudoku.css"/>
 <!--     when cell is highlighted, add css -->
 <!-- define cell highlighted css to have blue background     -->
     <script>
@@ -120,15 +120,16 @@
         console.log(scope);
         //if there is an input, change background color and text color
         if (/[1-9]/.test(inputValue)) {
-          if (inputValue !== ""){
+          if (inputValue != ""){
              scope.style.backgroundColor = "blue";
              scope.style.color = "white";
           }
-          //if cell is blank, change background color and text color back to original
-          else {
-            scope.style.backgroundColor = "white";
-            scope.style.color = "black";
-          }
+        }
+        //if cell is blank, change background color and text color back to original
+        else if (inputValue === "") {
+          console.log('else statment here');
+          scope.style.backgroundColor = "white";
+          scope.style.color = "black";
         }
         else {
           scope.value = "";
