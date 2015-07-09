@@ -26,19 +26,20 @@ function changeColor(scope) {
 
         var row1 = document.getElementsByClassName('row1');
 
+
         // gets values for row
         function getValues(row) {
           var values = [];
           for(var i = 0; i < row.length; i++){
-            values.push(row[i].value)
-          };
-          return values
+            values.push(row[i].value);
+          }
+          return values;
         };
 
         // add listener to row1
         for(var i = 0; i < row1.length; i++) {
           row1[i].addEventListener('input', function(){
-            allValues      = getValues(row1);
+            console.log(allValues);
             numbersOnly    = allValues.filter(Number);
             originalLength = numbersOnly.length;
             uniqLength     = uniqNumbers(numbersOnly).length;
@@ -69,7 +70,7 @@ function changeColor(scope) {
 
         // find uniq numbers
         function uniqNumbers(ary) {
-          return ary.reduce(function(a,b){
+          return ary.reduce(function(a,b) {
             if (a.indexOf(b) < 0) a.push(b);
             return a;
           }, []);
