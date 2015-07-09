@@ -135,7 +135,46 @@
           scope.value = "";
           console.log("please enter a number between 0 and 9.");
         }
-      }
+
+        var row1 = document.getElementsByClassName('row1');
+
+        // gets values for row
+        function getValues(row) {
+          var values = [];
+          for(var i = 0; i < row.length; i++){
+            values.push(row[i].value)
+          };
+          return values
+        };
+
+        // add listener to row1
+        for(var i = 0; i < row1.length; i++) {
+          row1[i].addEventListener('input', function(){
+            allValues      = getValues(row1);
+            numbersOnly    = allValues.filter(Number);
+            originalLength = numbersOnly.length;
+            uniqLength     = uniqNumbers(numbersOnly).length;
+
+            // if uniqLength < originalLength it means there are duplicate numbers
+            // highlight row
+            if(uniqLength < originalLength) {
+              for(var i = 0; i < row1.length; i++) {
+                row1[i].style.backgroundColor = "red";
+                row1[i].style.color = "white";
+              };
+            };
+          });
+        };
+
+        // find uniq numbers
+        function uniqNumbers(ary) {
+          return ary.reduce(function(a,b){
+            if (a.indexOf(b) < 0) a.push(b);
+            return a;
+          }, []);
+        };
+      };
+
     </script>
   </body>
 
