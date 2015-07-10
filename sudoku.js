@@ -25,7 +25,16 @@ function changeColor(scope) {
   }
 
   var row1 = document.getElementsByClassName('row1');
+  var row2 = document.getElementsByClassName('row2');
+  var row3 = document.getElementsByClassName('row3');
+  var row4 = document.getElementsByClassName('row4');
+  var row5 = document.getElementsByClassName('row5');
+  var row6 = document.getElementsByClassName('row6');
+  var row7 = document.getElementsByClassName('row7');
+  var row8 = document.getElementsByClassName('row8');
+  var row9 = document.getElementsByClassName('row9');
 
+  allRows = [ row1, row2, row3, row4, row5, row6, row7, row8, row9 ]
 
   // gets values for row
   function getValues(row) {
@@ -36,37 +45,54 @@ function changeColor(scope) {
     return values;
   };
 
-  // add listener to row1
-  for(var i = 0; i < row1.length; i++) {
-    row1[i].addEventListener('input', function(){
-      allValues      = getValues(row1)
-      console.log(allValues);
-      numbersOnly    = allValues.filter(Number);
-      originalLength = numbersOnly.length;
-      uniqLength     = uniqNumbers(numbersOnly).length;
+  // add listener to rows
+  for(var i = 0; i < allRows.length; i++){
+    var current_row = allRows[i];
+    addListenerToRow(current_row);
+  };
 
-      // if uniqLength < originalLength it means there are duplicate numbers
-      // highlight row red
-      if(uniqLength < originalLength) {
-        for(var i = 0; i < row1.length; i++) {
-          row1[i].style.backgroundColor = "red";
-          row1[i].style.color = "white";
+  function addListenerToRow(row){
+    for(var i = 0; i < row.length; i++){
+      row[i].addEventListener('input', function(){
+        allValues      = getValues(row)
+        console.log(allValues);
+        numbersOnly    = allValues.filter(Number);
+        originalLength = numbersOnly.length;
+        uniqLength     = uniqNumbers(numbersOnly).length;
+
+        // if uniqLength < originalLength it means there are duplicate numbers
+        // highlight row red
+        if(uniqLength < originalLength) {
+          setRowRedColor(row);
+
+        // if uniqLength == originalLength that means they are unique numbers
+        // reset background color if there is no value
+        // otherwise change it
+
+        } else if (uniqLength == originalLength){
+          setRowNormalColors(row);
         };
-      // if uniqLength == originalLength that means they are unique numbers
-      // reset background color if there is no value
-      // otherwise change it
-      } else if (uniqLength == originalLength) {
-        for(var i = 0; i < row1.length; i++) {
-          if (row1[i].value != 0) {
-            row1[i].style.backgroundColor = "blue";
-            row1[i].style.color = "white";
-          } else {
-            row1[i].style.backgroundColor = "white";
-            row1[i].style.color = "black";
-          }
-        };
+      });
+    };
+  };
+
+  function setRowNormalColors(row){
+    for(var i = 0; i < row.length; i++){
+      if (row[i].value != 0){
+        row[i].style.backgroundColor = "blue";
+        row[i].style.color           = "white";
+      } else {
+        row[i].style.backgroundColor = "white";
+        row[i].style.color           = "black";
       };
-    });
+    };
+  };
+
+  function setRowRedColor(row){
+    for(var i = 0; i < row.length; i++) {
+      row[i].style.backgroundColor = "red";
+      row[i].style.color = "white";
+    };
   };
 
   // find uniq numbers
