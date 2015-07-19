@@ -1,38 +1,6 @@
 //when cell is highlighted, add css
 //define cell highlighted css to have blue background
 
-function changeColor(scope) {
-  var inputValue = scope.value;
-  console.log("this is the scope:");
-  console.log(inputValue);
-  console.log(scope);
-  //if there is an input, change background color and text color
-  if (/[1-9]/.test(inputValue)) {
-    if (inputValue != "" && scope.style.backgroundColor != "red"){
-       scope.style.backgroundColor = "blue";
-       scope.style.color = "white";
-    }
-  }
-  //if cell is blank, change background color and text color back to original
-  else if (inputValue === "") {
-    console.log('else statement here');
-    scope.style.backgroundColor = "white";
-    scope.style.color = "black";
-  }
-  else {
-    scope.value = "";
-    console.log("please enter a number between 0 and 9.");
-  }
-
-  var row1 = document.getElementsByClassName('row1');
-  var row2 = document.getElementsByClassName('row2');
-  var row3 = document.getElementsByClassName('row3');
-  var row4 = document.getElementsByClassName('row4');
-  var row5 = document.getElementsByClassName('row5');
-  var row6 = document.getElementsByClassName('row6');
-  var row7 = document.getElementsByClassName('row7');
-  var row8 = document.getElementsByClassName('row8');
-  var row9 = document.getElementsByClassName('row9');
 
   allRows = [ row1, row2, row3, row4, row5, row6, row7, row8, row9 ]
 
