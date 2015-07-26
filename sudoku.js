@@ -1,25 +1,6 @@
-function changeColor(scope) {
-  var inputValue = scope.value;
-  console.log("this is the scope:");
-  console.log(inputValue);
-  console.log(scope);
-  //if there is an input, change background color and text color
-  if (/[1-9]/.test(inputValue)) {
-    if (inputValue != "" && scope.style.backgroundColor != "red"){
-       scope.style.backgroundColor = "blue";
-       scope.style.color = "white";
-    }
-  }
-  //if cell is blank, change background color and text color back to original
-  else if (inputValue === "") {
-    console.log('else statement here');
-    scope.style.backgroundColor = "white";
-    scope.style.color = "black";
-  }
-  else {
-    scope.value = "";
-    console.log("please enter a number between 0 and 9.");
-  }
+//when cell is highlighted, add css
+//define cell highlighted css to have blue background
+(function(){
 
   var row1 = document.getElementsByClassName('row1');
   var row2 = document.getElementsByClassName('row2');
@@ -99,10 +80,8 @@ function changeColor(scope) {
       return a;
     }, []);
   };
-};
 
 // columns
-(function(){
   var col1 = document.getElementsByClassName('col1');
   var col2 = document.getElementsByClassName('col2');
   var col3 = document.getElementsByClassName('col3');
