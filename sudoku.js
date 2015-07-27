@@ -1,5 +1,3 @@
-//when cell is highlighted, add css
-//define cell highlighted css to have blue background
 (function(){
 
   var row1 = document.getElementsByClassName('row1');
