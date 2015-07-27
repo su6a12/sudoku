@@ -30,11 +30,11 @@
   function addListenerToRow(row){
     for(var i = 0; i < row.length; i++){
       row[i].addEventListener('input', function(){
-        allValues      = getValues(row)
-        console.log(allValues);
-        numbersOnly    = allValues.filter(Number);
-        originalLength = numbersOnly.length;
-        uniqLength     = uniqNumbers(numbersOnly).length;
+        var allValues      = getValues(row)
+        console.log("row values", allValues);
+        var numbersOnly    = allValues.filter(Number);
+        var originalLength = numbersOnly.length;
+        var uniqLength     = uniqNumbers(numbersOnly).length;
 
         // if uniqLength < originalLength it means there are duplicate numbers
         // highlight row red
@@ -127,11 +127,29 @@
 
   function addListenerToSquares(sq){
     for(var i = 0; i < sq.length; i++){
-      sq[i].addEventListener('click', function(){
-        console.log("")
-        console.log(this)
+      var thisSquare = sq
+      sq[i].addEventListener('input', function(){
+        var allValues      = getValuesSquare(thisSquare)
+        // console.log("sq_vals", allValues);
+        var numbersOnly    = allValues.filter(Number);
+        var originalLength = numbersOnly.length;
+        var uniqLength     = uniqNumbers(numbersOnly).length;
+        var duplicates     = false
+        if (originalLength != uniqLength)
+          duplicates = true
+        console.log("duplicates in sq", duplicates)
       })
     }
   }
+
+  // gets values for square
+  function getValuesSquare(sq) {
+    var values = [];
+    // console.log("sq", sq)
+    for(var i = 0; i < sq.length; i++){
+      values.push(sq[i].value);
+    }
+    return values;
+  };
 
 })();
