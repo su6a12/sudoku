@@ -26,7 +26,7 @@
   // add listener to rows
   for(var i = 0; i < allRows.length; i++){
     var current_row = allRows[i];
-    addListenerToRow(current_row);
+    // addListenerToRow(current_row);
   };
 
   function addListenerToRow(row){
@@ -97,7 +97,7 @@
   // add listener to cols
   for(var i = 0; i < allCols.length; i++){
     var current_col = allCols[i];
-    addListenerToCol(current_col);
+    // addListenerToCol(current_col);
   };
 
   function addListenerToCol(col){
@@ -107,4 +107,33 @@
       })
     };
   };
+
+  // 3x3 squares
+  var square1 = document.getElementsByClassName('square1');
+  var square2 = document.getElementsByClassName('square2');
+  var square3 = document.getElementsByClassName('square3');
+  var square4 = document.getElementsByClassName('square4');
+  var square5 = document.getElementsByClassName('square5');
+  var square6 = document.getElementsByClassName('square6');
+  var square7 = document.getElementsByClassName('square7');
+  var square8 = document.getElementsByClassName('square8');
+  var square9 = document.getElementsByClassName('square9');
+
+  var allSquares = [ square1, square2, square3, square4, square5, square6, square7, square8, square9 ]
+
+  // add listener to squares
+  for(var i = 0; i < allSquares.length; i++){
+    var currentSq = allSquares[i];
+    addListenerToSquares(currentSq);
+  }
+
+  function addListenerToSquares(sq){
+    for(var i = 0; i < sq.length; i++){
+      sq[i].addEventListener('click', function(){
+        console.log("")
+        console.log(this)
+      })
+    }
+  }
+
 })();
